@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111936547-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-111936547-2');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SanctionsExplorer</title>
+    <link rel="icon" href="../static/img/sanctions_explorer_favicon (blue, dark gray, camelcase).png"/>
+    <link rel="stylesheet" href="../static/css/lux_bootstrap.min.css"></link>
+    <link rel="stylesheet" href="../static/css/style.css"></link>
+	<link rel="stylesheet" href="../static/css/onebar.css"></link>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../static/js/onebar.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid vertical-center">
+        <div class="no-js">
+            <div class="d-flex justify-content-center">
+                <div class="alert alert-danger">
+                    <p>You MUST have Javascript enabled to use this site.</p>
+                    <p>Here are <a href="https://www.enable-javascript.com/" target="_blank" class="real-link"> instructions how to enable Javascript in your web browser</a>.</p>
+                    <p>If you visit the above link and it says that you do have Javascript enabled, please contact us.</p>
+                </div>
+            </div>
+        </div>
+        <!-- faster than using jQuery document ready? -->
+        <script type="text/javascript">
+            document.getElementsByClassName('no-js')[0].style.display = 'none';
+        </script>
+
+
+        <div class="abs-center attach-to-top unselectable" id="info-group">
+            <div class="d-flex justify-content-center" id="tagline">
+                <h5 class="text-center" id="main-tagline">Explore 24 years of OFAC Sanctions Data</h5>
+            </div>
+
+            <div class="d-flex justify-content-center" id="description">
+                <p class="text-center" id="sub-tagline">7,100+ entries across the SDN, SSI, FSE, and more. Updated &lt; 5 minutes ago.</p>
+            </div>
+        </div>
+
+        <div class="abs-center unselectable" id="center-group">
+            <div class="d-flex justify-content-center">
+                <div class="d-flex flex-column">
+                    <img src="../static/img/sanctions_explorer (blue, dark gray, camelcase).png" class="img-fluid" id="splash-logo" />
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <input type="text" class="form-control form-control-md" id="one-search-input" placeholder="Search U.S. Treasury sanctions (e.g. 'Russia', 'Kony', 'DPRK2')" autofocus>
+                <div class="btn btn-primary" id="search-button"><img src="../img/search-icon.png" id="search-icon"></div>
+            </div>
+
+            <div class="d-flex justify-content-center" id="help-text">
+                <p class="text-center">Search U.S. Treasury sanctions (e.g. 'Russia', 'Kony', 'DPRK2')</p>
+            </div>
+        </div>
+
+        <div class="d-flex flex-wrap justify-content-center attach-to-bottom abs-center unselectable" id="footer-group">
+            <div class="d-flex flex-wrap justify-content-center">
+                <h5>Created by</h5>
+                <a href="https://archerimpact.com" target="_blank">
+                    <img src="../static/img/Archerlogobig.png" class="footer-logo" id="archer-logo">
+                </a>
+            </div>
+            <div class="d-flex flex-wrap justify-content-center">
+                <h5>in partnership with</h5>
+                <a href="https://c4ads.org" target="_blank">
+                    <img src="../static/img/c4ads_logo_crop.png" class="footer-logo inverted" id="c4ads-logo">
+                </a>
+            </div>
+        </div>
+    </div><!-- /container-fluid -->
+
+    <!-- <![if IE]>
+        <script type="text/javascript">
+            $('body').empty();
+            $('body').append('<h1>Unfortunately, Internet Explorer is not yet a supported browser, though we are working on supporting it.  Please access the site using a modern browser such as Chrome or Firefox for now.  Thanks!</h1>');
+        </script>
+    <![endif]> -->
+    <script type="text/javascript">
+        if (navigator.appName == 'Microsoft Internet Explorer' || 'ActiveXObject' in window) {
+            document.body.innerHTML = '<h1>Unfortunately, Internet Explorer is not yet a supported browser, though we are working on supporting it.  Please access the site using a modern browser such as Chrome or Firefox for now.  Thanks!</h1>';
+        }
+    </script>
+</body>
+
+</html>

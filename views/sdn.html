@@ -1,0 +1,486 @@
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111936547-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-111936547-2');
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Search | SanctionsExplorer</title>
+    <link rel="icon" href="../static/img/sanctions_explorer_favicon (blue, dark gray, camelcase).png"/>
+    <link rel="stylesheet" href="../static/css/lux_bootstrap.min.css"></link>
+    <link rel="stylesheet" href="../static/css/style.css"></link>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.rawgit.com/yahoo/xss-filters/master/dist/xss-filters.min.js" crossorigin="anonymous"></script>
+    <script src="../static/js/columns.js"></script>
+    <script src="../static/js/doT.min.js" charset="utf-8"></script>
+    <script src="../static/js/search.js"></script>
+    <script src="../static/js/sdn.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark unselectable">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img id="product-logo" src="../static/img/sanctions_explorer (blue, white, camelcase).png">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/sdn">OFAC Sanctions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/press-releases">OFAC Press Releases</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/feedback">Feedback</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-md-4 page-col left-col">
+                <div class="d-flex flex-column left-flex-col">
+                    <div class="sticky-header">
+                        <div class="d-flex flex-row unselectable">
+                            <h3 class="col-header mr-auto">Search</h3>
+                            <img src="../img/open-iconic-svg/trash.svg" class="col-icon" id="trash-icon" data-toggle="tooltip" data-placement="bottom" title="Clear Filters">
+                            <img src="../img/open-iconic-svg/question-mark.svg" class="col-icon" id="search-info-icon" data-toggle="tooltip" data-placement="bottom" title="Info">
+                        </div>
+                        <hr class="no-bottom-margin">
+                    </div>
+                    <form class="search-form">
+                        <div class="form-row">
+                            <div class="form-group col-xl-12" id=all-fields-form-group>
+                                <input type="text" class="form-control form-control-sm" id="all-fields-input" placeholder="Search all fields" autofocus>
+                                <small id="all-fields-help" class="form-text text-muted unselectable">Search the entire SDN database for your query.</small>
+                            </div>
+                        </div>
+
+                        <h5 class="unselectable" id="more-filters-header">Additional Filters</h5>
+
+                        <div class="form-row">
+                            <div class="form-group col-sm-5">
+                                <select class="custom-select form-control form-control-sm" id="type-select">
+                                    <option selected="">All types</option>
+                                    <option value="Individual">Individual</option>
+                                    <option value="Entity">Entity/Organization</option>
+                                    <option value="Aircraft">Aircraft</option>
+                                    <option value="Vessel">Vessel</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-7">
+                                <input type="text" class="form-control form-control-sm" id="name-input" placeholder="Name or Alias">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-xs-12 col-lg-5">
+                                <select multiple class="custom-select form-control form-control-sm" id="program-select">
+                                    <!-- Populated by Javascript -->
+                                </select>
+                            </div>
+                            <div class="d-none d-lg-block col-lg-7">
+                                <!-- These are both populated by Javscript on program select hover -->
+                                <div id="program-info">
+                                    <h6 id="program-header">Programs</h6>
+                                    <small id="program-description">(Hover to see description. To select multiple, Ctrl+click or Cmd+click.)</small>
+                                </div>
+                            </div>
+                        </div><!-- /form-row -->
+
+                        <hr id="search-form-divider">
+
+                        <div class="search-rows">
+                            <!-- Populated by Javascript -->
+                        </div>
+                        <div class="search-row-error-alert">
+                                <!-- Populated by Javascript if error -->
+                        </div>
+                        <div class="form-group search-button-group">
+                            <button type="submit" class="btn btn-primary btn-sm search-button">Search</button>
+                        </div>
+                    </form>
+
+                    <div class="mt-auto unselectable" id="footer">
+                        <p>Created by <a href="https://archerimpact.com" target="_blank">Archer</a> in partnership with <a href="https://c4ads.org" target="_blank">C4ADS</a>.</p>
+                    </div>
+                </div><!-- /left-col -->
+            </div>
+
+            <div class="col-xs-12 col-md-8 page-col right-col">
+                <div class="sticky-header">
+                    <div class="d-flex flex-row" id="results-header-row">
+                        <h3 class="col-header text-left unselectable" id="results-header">Results</h3>
+                        <img src="../img/open-iconic-svg/data-transfer-download.svg" class="ml-auto col-icon unselectable" id="download-icon" data-toggle="tooltip" data-placement="bottom" title="Download CSV">
+                        <img src="../img/open-iconic-svg/link-intact.svg" class="col-icon unselectable" id="results-link-icon" data-toggle="tooltip" data-placement="bottom" title="Open Link Explorer">
+                        <img src="../img/open-iconic-svg/print.svg" class="col-icon unselectable" id="results-print-icon" data-toggle="tooltip" data-placement="bottom" title="Print">
+                        <!--<img src="../img/open-iconic-svg/share.svg" class="col-icon" id="results-share-icon">-->
+                        <img src="../img/open-iconic-svg/plus.svg" class="col-icon unselectable" id="results-plus-icon" data-toggle="tooltip" data-placement="bottom" title="Expand all">
+                        <img src="../img/open-iconic-svg/minus.svg" class="col-icon unselectable" id="results-minus-icon" data-toggle="tooltip" data-placement="bottom" title="Collapse all">
+                    </div>
+                    <hr class="no-bottom-margin">
+                </div>
+
+                <div class="loader">Loading...</div>
+                <div id="confused">
+                    <a href="#" class="real-link">
+                        <p>Not sure why there are 0 results?</p>
+                    </a>
+                </div>
+                <div class="search-results" id="error-display">
+                    <!-- Populated with Javascript -->
+                </div>
+                <h5 class="results-header exact-header text-center" id="exact-header">Exact Matches</h5>
+                <hr class="results-header exact-header no-bottom-margin">
+                <div class="search-results" id="exact-results">
+                    <!-- Populated with Javscript -->
+                </div>
+                <h5 class="results-header fuzzy-header text-center" id="fuzzy-header">Near Matches</h5>
+                <hr class="results-header fuzzy-header no-bottom-margin">
+                <div class="search-results" id="fuzzy-results">
+                    <!-- Populated with Javscript -->
+                </div>
+                <button class="next-page btn btn-outline-primary btn-md">Next Page</button>
+            </div><!-- /col-md-8 -->
+        </div><!-- /row -->
+    </div><!-- /container-fluid -->
+
+
+
+    <script id="card-template" type="text/template">
+        <div class="card">
+            <div class="card-header">
+                <a href="#" class="collapse-link" data-id="{{= it.fixed_ref }}">
+                    {{= it.primary_display_name }}
+                </a>
+                <small class="card-sdn-type">
+                    ({{= it.party_sub_type }})
+                </small>
+
+                <div class="float-right card-program">
+                    {{? it.sdn_display }}
+                        {{= it.sdn_display }}
+                    {{?}}
+                    {{= it.programs.join(' / ') }}
+                </div>
+            </div>
+            <div class="collapse hide card-body-{{=it.fixed_ref }}">
+                <div class="card-body">
+                    {{? it.identity.aliases.length > 0 }}
+                        <div class="detail-group">
+                            <h5 class="card-detail-header">Aliases</h5>
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th class="muted-table-text text-left">name</th>
+                                        <th class="muted-table-text text-left">quality</th>
+                                        <th class="muted-table-text text-left">type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{ for (var i in it.identity.aliases) { }}
+                                        <tr>
+                                            <td>{{= it.identity.aliases[i].display_name }}</td>
+                                            <td>{{= it.identity.aliases[i].strength }}</td>
+                                            <td>{{= it.identity.aliases[i].alias_type }}</td>
+                                        </tr>
+                                    {{ } }}
+                                </tbody>
+                            </table>
+                        </div>
+                    {{?}}
+
+                    {{? it.documents.length > 0 }}
+                        <div class="detail-group">
+                            <h5 class="card-detail-header">Documents</h5>
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th class="muted-table-text text-left">#</th>
+                                        <th class="muted-table-text text-left">type</th>
+                                        <th class="muted-table-text text-left">validity</th>
+                                        {{? it.document_headers && it.document_headers.includes('issued_by') }}
+                                            <th class="muted-table-text text-left">issued by</th>
+                                        {{?}}
+                                        {{? it.document_headers && it.document_headers.includes('issued_in') }}
+                                            <th class="muted-table-text text-left">issued in</th>
+                                        {{?}}
+                                        {{? it.document_headers && it.document_headers.includes('issuing_authority') }}
+                                            <th class="muted-table-text text-left">authorized by</th>
+                                        {{?}}
+                                        {{? it.document_headers && it.document_headers.includes('Issue Date') }}
+                                            <th class="muted-table-text text-left">issued on</th>
+                                        {{?}}
+                                        {{? it.document_headers && it.document_headers.includes('Expiration Date') }}
+                                            <th class="muted-table-text text-left">expires on</th>
+                                        {{?}}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{ for (var i in it.documents) { }}
+                                        <tr>
+                                            <td class="doc-number">
+                                                {{= it.documents[i].id_number }}
+                                            </td>
+                                            <td>
+                                                {{= it.documents[i].type }}
+                                            </td>
+                                            <td>
+                                                {{= it.documents[i].validity }}
+                                            </td>
+
+                                            {{? it.document_headers.includes('issued_by') }}
+                                                <td class="doc-info">
+                                                    {{? it.documents[i].issued_by }}
+                                                        {{= it.documents[i].issued_by }}
+                                                    {{?}}
+                                                </td>
+                                            {{?}}
+
+                                            {{? it.document_headers.includes('issued_in') }}
+                                                <td class="doc-info">
+                                                    {{? it.documents[i].issued_in }}
+                                                        {{= it.documents[i].issued_in }}
+                                                    {{?}}
+                                                </td>
+                                            {{?}}
+
+                                            {{? it.document_headers.includes('issuing_authority') }}
+                                                <td class="doc-info">
+                                                    {{? it.documents[i].issuing_authority }}
+                                                        {{= it.documents[i].issuing_authority }}
+                                                    {{?}}
+                                                </td>
+                                            {{?}}
+
+                                            {{? it.document_headers.includes('Issue Date') }}
+                                                <td class="doc-info">
+                                                    {{? it.documents[i]['Issue Date'] }}
+                                                        {{= it.documents[i]['Issue Date'] }}
+                                                    {{?}}
+                                                </td>
+                                            {{?}}
+
+                                            {{? it.document_headers.includes('Expiration Date') }}
+                                                <td class="doc-info">
+                                                    {{? it.documents[i]['Expiration Date'] }}
+                                                        {{= it.documents[i]['Expiration Date'] }}
+                                                    {{?}}
+                                                </td>
+                                            {{?}}
+                                        </tr>
+                                    {{ } }}
+                                </tbody>
+                            </table>
+                        </div>
+                    {{?}}
+
+                    {{ for (var feature in it.features) { }}
+                        <div class="detail-group">
+                            <h5 class="card-detail-header">{{= feature }}</h5>
+                            <ul>
+                                {{ for (var i = 0; i < it.features[feature].length; i++) { }}
+
+                                    {{? it.features[feature][i].details }}
+                                        <li>
+                                            {{= it.features[feature][i].details }}
+                                            {{? it.features[feature][i].reliability != "Unknown" }}
+                                                ({{= it.features[feature][i].reliability }})
+                                            {{?}}
+
+                                            {{? it.features[feature][i].comment }}
+                                                ({{= it.features[feature][i].comment }})
+                                            {{?}}
+                                        </li>
+                                    {{?}}
+
+                                    {{? it.features[feature][i].date }}
+                                        <li>
+                                            {{= it.features[feature][i].date }}
+                                            {{? it.features[feature][i].reliability != "Unknown" }}
+                                                ({{= it.features[feature][i].reliability }})
+                                            {{?}}
+
+                                            {{? it.features[feature][i].comment }}
+                                                ({{= it.features[feature][i].comment }})
+                                            {{?}}
+                                        </li>
+                                    {{?}}
+
+                                    {{? it.features[feature][i].location }}
+                                        <li>
+                                            {{= it.features[feature][i].location['COMBINED'] }}
+                                            {{? it.features[feature][i].reliability != "Unknown" }}
+                                                ({{= it.features[feature][i].reliability }})
+                                            {{?}}
+
+                                            {{? it.features[feature][i].comment }}
+                                                ({{= it.features[feature][i].comment }})
+                                            {{?}}
+                                        </li>
+                                    {{?}}
+                                {{ } }}
+                            </ul>
+                        </div>
+                    {{ } }}
+
+                    {{? it.party_comment }}
+                        <div class="detail-group">
+                            <h5 class="card-detail-header">OFAC Comment</h5>
+                            <p>{{= it.party_comment }}
+                        </div>
+                    {{?}}
+
+                    {{? it.sanctions_entries[0].entry_events.length > 0 }}
+                        <div class="detail-group">
+                            <h5 class="card-detail-header">Sanction Events</h5>
+                            <ul>
+                                {{ for (var i = 0; i < it.sanctions_entries[0].entry_events.length; i++) { }}
+                                    <li>{{= it.sanctions_entries[0].entry_events[i][0] }}: {{= it.sanctions_entries[0].entry_events[i][1] }}</li>
+                                {{ } }}
+                            </ul>
+                        </div>
+                    {{?}}
+
+                    {{? it.linked_profile_ids.length > 0 }}
+                        <div class="detail-group">
+                            <h5 class="card-detail-header">Linked To</h5>
+                            <ul>
+                                {{ for (var i = 0; i < it.linked_profiles.length; i++) { }}
+                                    <li>
+                                        <a href="#" data-id="{{= it.linked_profiles[i].linked_id }}" class="activate-modal real-link">
+                                            {{= it.linked_profiles[i].linked_name.display_name }}
+                                        </a>
+                                    </li>
+                                {{ } }}
+                            </ul>
+                        </div>
+                    {{?}}
+
+                    {{? it.pr_data && it.pr_data.length > 0 }}
+                        <div class="detail-group">
+                            <h5 class="card-detail-header">Possible Press Releases</h5>
+                            <ul>
+                                {{ for (var i = 0; i < it.pr_data.length; i++) { }}
+                                    <li>
+                                        <a href="{{= it.pr_data[i].link }}" class="real-link" target="_blank">
+                                            {{? it.pr_data[i].date }}
+                                                {{= it.pr_data[i].date }}:
+                                            {{?}}
+
+                                            {{= it.pr_data[i].title }}
+                                        </a>
+                                    </li>
+                                {{ } }}
+                            </ul>
+                        </div>
+                    {{?}}
+
+                    {{? it.ofac_id }}
+                        <div class="detail-group d-print-none">
+                            <h5 class="card-detail-header">
+                                Original
+                            </h5>
+                            <ul>
+                                <li class="no-bullet">
+                                    <a href="https://sanctionssearch.ofac.treas.gov/Details.aspx?id={{=it.ofac_id}}" class="real-link" target="_blank">
+                                        View on OFAC website
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    {{?}}
+
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="search-row-template" type="text/template">
+        <div id="search-row-{{=it.id}}" class="search-row form-row">
+            <div class="form-group col-sm-5">
+                <select id="search-row-{{=it.id}}-select" class="search-row-select custom-select form-control form-control-sm">
+                    <option value="select-field" selected>Select field</option>
+                    {{ for (var f in it.fields) { }}
+                        <option value="{{=f}}">{{= it.fields[f] }}</option>
+                    {{ } }}
+                </select>
+            </div>
+            <div class="form-group col-sm-7">
+                <input type="text" id="search-row-{{=it.id}}-input" class="form-control form-control-sm">
+            </div>
+        </div>
+    </script>
+
+    <!-- Link Explorer modal -->
+    <div class="modal modal-lg entity-modal fade" id="links-modal" tabindex="-1">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <div class="d-flex flex-row">
+                <h5 class="modal-title text-left mr-auto" id="results-header">Link Explorer</h5>
+                <img src="../img/open-iconic-svg/plus.svg" class="col-icon" id="modal-plus-icon" data-toggle="tooltip" data-placement="bottom" title="Expand all">
+                <img src="../img/open-iconic-svg/minus.svg" class="col-icon" id="modal-minus-icon" data-toggle="tooltip" data-placement="bottom" title="Collapse all">
+              </div>
+            <button type="button" class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="entity-modal-body">
+            <!-- Populated with Javascript -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-primary" data-dismiss="modal" id="clear-modal-body">Clear All</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="search-info-modal" tabindex="-1">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Search Information</h5>
+            <button type="button" class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="info-modal-body">
+              <h6>Tips</h6>
+              <ul>
+                  <li>Only a few entities have original-language names.  Many searches in Arabic, Chinese, etc will not return results until OFAC publishes more original language names.</li>
+                  <li>If your searches are returning 0 results, try removing some words in the text boxes or remove some filters entirely.</li>
+                  <li>We include a few country abbreviations for your convenience: UK/Britain/England, US/USA/America, UAE, NK/DPRK, DRC, and CAR.</li>
+                  <li>There is no boolean search (e.g. "Russia OR Ukraine"). We are working on adding it.</li>
+                  <li>Search results are sorted in order of relevance.  Currently you cannot sort on other attributes; however this is coming soon.</li>
+              </ul>
+              <h6>Reporting an Issue</h6>
+              <p>If your searches are consistently failing when they shouldn't be, or you encounter any other issues, please <a href="feedback" target="_blank">let us know</a>.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+
+</html>

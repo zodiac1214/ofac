@@ -1,0 +1,126 @@
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111936547-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-111936547-2');
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About | SanctionsExplorer</title>
+    <link rel="icon" href="../static/img/sanctions_explorer_favicon (blue, dark gray, camelcase).png"/>
+    <link rel="stylesheet" href="../static/css/lux_bootstrap.min.css"></link>
+    <link rel="stylesheet" href="../static/css/style.css"></link>
+    <link rel="stylesheet" href="../static/css/about.css"></link>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../static/js/columns.js"></script>
+    <script src="../static/js/doT.min.js" charset="utf-8"></script>
+    <script src="../static/js/about.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark unselectable">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img id="product-logo" src="../static/img/sanctions_explorer (blue, white, camelcase).png">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sdn">OFAC Sanctions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/press-releases">OFAC Press Releases</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/feedback">Feedback</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 order-12 col-md-4 order-md-1 page-col left-col">
+                <div class="d-flex flex-column left-flex-col">
+                    <div class="sticky-header">
+                        <h3 class="col-header text-center">FAQ</h3>
+                        <hr class="no-bottom-margin">
+                    </div>
+                    <div class="faq-list">
+                        <!-- Populated by Javascript -->
+                    </div>
+                    <div class="mt-auto unselectable" id="footer">
+                        <p>Created by <a href="https://archerimpact.com" target="_blank">Archer</a> in partnership with <a href="https://c4ads.org" target="_blank">C4ADS</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 order-1 col-md-8 order-md-12 page-col right-col">
+                <div class="sticky-header">
+                    <h3 class="col-header text-center">About Us</h3>
+                    <hr>
+                </div>
+                <p>SanctionsExplorer reimagines the <a href="https://sanctionssearch.ofac.treas.gov">OFAC SDN List website</a>, a list of individuals, entities, and vehicles that are sanctioned by the U.S. Treasury.  This list is difficult to search and provides very little functionality -- yet it plays a crucial role in academic, compliance, and due diligence investigations.  We've redesigned the experience of searching the SDN list, providing access to all of the same data with a vastly improved interface and additional features to streamline the investigative process.</p>
+
+                <p>SanctionsExplorer was created by <a href="https://archerimpact.com">Archer</a> (a Berkeley-based nonprofit using tech to improve human rights and human security) in partnership with <a href="https://c4ads.org">C4ADS</a> (a nonprofit dedicated to providing data-driven, evidence-based research on global conflict and transnational security issues).</p>
+
+                <h3 class="about-header text-center">Features</h3>
+                <hr>
+
+                <h5>More Robust Search</h5>
+                <p>Want to find all businesses related to North Korea?  What about individuals whose Chinese names can be transliterated to English in multiple ways?</p>
+                <p>With fuzzy/inexact matching, items that might have previously gone unfound will no longer slip through the cracks.  Our search is forgiving of typos and alternate spellings or transliterations.</p>
+                <p>We also provide a number of additional filters, especially in regards to location (nationality, citizenship, place of birth, etc).  There are also filters to find all entities who are linked to a country ("Related to Country") as well as a date-of-sanction filter.</p>
+                <hr>
+
+                <h5>Press release integration</h5>
+                <p>The Treasury releases additional context and justification behind sanctions via <a href="https://www.treasury.gov/resource-center/sanctions/OFAC-Enforcement/Pages/OFAC-Recent-Actions.aspx">press releases</a> that accompany updates to the SDN list.  These are indexed &amp; searchable via the SanctionsExplorer platform.  Using the press release archive search, searches can also be conducted for entities that were sanctioned at one point but have since been removed from the SDN list (since their identifying information will have been published in a press release).
+                <p>Additionally, we've algorithmically matched press releases with the entities that they discuss; SanctionsExplorer will attempt to display (in the regular search results) all press releases that an entity appeared in!</p>
+                <hr>
+
+                <h5>Additional Data</h5>
+                <p>There is official Treasury data that is not available through the OFAC website, including the reliability of information (e.g. confirmed vs reported) as well as the sanction date and legal basis.</p>
+                <p>Additionally, OFAC has began including some non-Latin aliases (mostly in Cyrillic, Chinese, Japanese, and Arabic).  Though these are neither searachable nor surfaced in the results on the OFAC website, they are freely available on SanctionsExplorer. Note that currently a small number of entities have non-Latin names.</p>
+                <hr>
+
+                <h5>Downloadable reports</h5>
+                <p>Regular search queries can be printed, allowing for immediate printable reports.  Expand the entities of interest and their details will be included in the printout!</p>
+                <p>Search results can also be downloaded as a CSV file, to be opened in Excel or imported into another tool.  We are still working on including more data in the download.</p>
+                <hr>
+
+                <h5>And more!</h5>
+                <p>There are plenty of other ways that SanctionsExplorer stands out from the Treasury's website, including an interface that's modern, updated, and requires fewer clicks to navigate.  If you'd like to see a feature added or report a bug, please fill out our feedback form!  We continue striving for improvement and prioritize user feedback and community input when considering how to prioritize our efforts.</p>
+            </div>
+        </div>
+    </div>
+
+    <script id="faq-card-template" type="text/template">
+        <div class="card">
+            <div class="card-header">
+                <a data-toggle="collapse" href="#card-body-{{=it.id}}">
+                    {{=it.question}}
+                </a>
+            </div>
+            <div class="collapse hide" id="card-body-{{=it.id}}">
+                <div class="card-body card-body-condensed faq-card-body">
+                    {{=it.answer}}
+                </div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

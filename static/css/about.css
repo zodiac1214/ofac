@@ -1,0 +1,39 @@
+@media (max-width: 767px) {
+    .left-col {
+        padding-bottom: 6rem;
+    }
+}
+
+.right-col {
+    /* We can afford a bit more padding here. */
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
+}
+
+.about-header {
+    padding-top: 2rem;
+}
+
+.faq-card-body {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* Specific to the feedback page */
+#email-submit-button {
+    width: 100%;
+}
+
+#feedback-form {
+    margin-top: 3rem;
+    padding: 2rem 2rem 1rem 2rem;
+    border: 1px solid #bbbbbb;
+}
+
+#feedback-form-header {
+    margin-bottom: 0.5rem;
+}
+
+#issue-select {
+    background-color: #f7f7f9;
+}
